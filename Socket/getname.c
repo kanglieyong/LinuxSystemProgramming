@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-  char* host, ** name, ** addrs;
+  char* host, ** names, ** addrs;
   struct hostent* hostinfo;
 
   if (argc == 1) {
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
     host = argv[1];
   }
 
-  hostinfo = gethostbyname[host];
+  hostinfo = gethostbyname(host);
   if (!hostinfo) {
     fprintf(stderr, "cannot get info for host: %s\n", host);
     exit(1);
@@ -34,14 +34,14 @@ int main(int argc, char* argv[])
   }
   printf("\n");
 
-  if (hostinfo->h_addrtype != AF_INIT) {
+  if (hostinfo->h_addrtype != AF_INET) {
     fprintf(stderr, "not an IP host!\n");
     exit(1);
   }
 
   addrs = hostinfo->h_addr_list;
   while (*addrs) {
-    printf(" %s", init_ntoa(*(struct in_addr *)*addrs));
+    printf(" %s", inet_ntoa(*(struct in_addr *)*addrs));
     addrs++;
   }
   printf("\n");
