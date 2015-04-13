@@ -36,6 +36,6 @@ void* thread_function(void* arg)
 {
   printf("thread_function is running. Argument was %s\n", (char *)arg);
   sleep(3);
-  strcpy(message, "Bye!\n");
+  strcpy(message, "Bye!");
   pthread_exit("Thank you for the CPU time");
 }
