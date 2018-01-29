@@ -4,6 +4,9 @@
 #include <string.h>
 #include <pthread.h>
 
+// just like a cpp std::thread
+// first create thread, then join
+
 void* thread_function(void* arg);
 char message[] = "Hello World";
 
