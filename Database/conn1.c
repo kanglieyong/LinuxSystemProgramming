@@ -13,7 +13,14 @@ int main(int argc, char* argv[])
     return EXIT_FAILURE;
   }
 
-  conn_ptr = mysql_real_connect(conn_ptr, "localhost", "qinguan", "shaoyou", "foo", 0, NULL, 0);
+  conn_ptr = mysql_real_connect(conn_ptr, 
+                                "localhost",  /* hostname    */
+                                "kly",        /* username    */
+                                "1",          /* password    */
+                                "foo",        /* db instance */
+                                0, 
+                                NULL, 
+                                0);
 
   if (conn_ptr) {
     printf("Connection success\n");
